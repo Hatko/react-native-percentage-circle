@@ -45,36 +45,36 @@ const styles = StyleSheet.create({
     position: "relative",
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#e3e3e3"
+    backgroundColor: "#e3e3e3",
   },
 
   leftWrap: {
     overflow: "hidden",
     position: "absolute",
-    top: 0
+    top: 0,
   },
 
   loader: {
     position: "absolute",
     left: 0,
     top: 0,
-    borderRadius: 1000
+    borderRadius: 1000,
   },
 
   innerCircle: {
     overflow: "hidden",
     position: "relative",
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
   },
 
   text: {
     fontSize: 11,
-    color: "#888"
-  }
+    color: "#888",
+  },
 });
 
-const deg = number => `${number}deg`;
+const deg = (number) => `${number}deg`;
 
 function Disabled(props) {
   let { radius, disabledText } = props.data;
@@ -86,8 +86,8 @@ function Disabled(props) {
         {
           width: diameter,
           height: diameter,
-          borderRadius: radius
-        }
+          borderRadius: radius,
+        },
       ]}
     >
       <Text style={styles.text}>{disabledText}</Text>
@@ -113,9 +113,9 @@ function RightTransformer(props) {
           transform: [
             { translateX: -radius / 2 },
             { rotate: deg(rotate) },
-            { translateX: radius / 2 }
-          ]
-        }
+            { translateX: radius / 2 },
+          ],
+        },
       ]}
     >
       <View
@@ -131,9 +131,9 @@ function RightTransformer(props) {
             transform: [
               { translateX: radius / 2 },
               { rotate: rightTransformerDegree },
-              { translateX: -radius / 2 }
-            ]
-          }
+              { translateX: -radius / 2 },
+            ],
+          },
         ]}
       />
     </View>
@@ -158,9 +158,9 @@ function LeftTransformer(props) {
           transform: [
             { translateX: radius / 2 },
             { rotate: deg(rotate) },
-            { translateX: -radius / 2 }
-          ]
-        }
+            { translateX: -radius / 2 },
+          ],
+        },
       ]}
     >
       <View
@@ -176,9 +176,9 @@ function LeftTransformer(props) {
             transform: [
               { translateX: -radius / 2 },
               { rotate: leftTransformerDegree },
-              { translateX: radius / 2 }
-            ]
-          }
+              { translateX: radius / 2 },
+            ],
+          },
         ]}
       />
     </View>
@@ -192,7 +192,7 @@ function InnerCircle(props) {
     innerColor,
     percent,
     textStyle,
-    children
+    children,
   } = props.data;
 
   if (borderWidth < 2) borderWidth = 2;
@@ -205,8 +205,8 @@ function InnerCircle(props) {
           width: (radius - borderWidth) * 2,
           height: (radius - borderWidth) * 2,
           borderRadius: radius - borderWidth,
-          backgroundColor: innerColor
-        }
+          backgroundColor: innerColor,
+        },
       ]}
     >
       {children ? (
@@ -219,18 +219,6 @@ function InnerCircle(props) {
 }
 
 class PercentageCircle extends Component {
-  propTypes: {
-    color: React.PropTypes.string, // 进度条颜色
-    bgcolor: React.PropTypes.string, // 背景条颜色
-    innerColor: React.PropTypes.string, // 环内区域背景色
-    radius: React.PropTypes.number, // 外圆半径
-    percent: React.PropTypes.number, // 进度（百分比分子）
-    borderWidth: React.Proptypes.number, // 环厚度（同心圆半径差值）
-    textStyle: React.Proptypes.array,
-    disabled: React.PropTypes.bool,
-    rotate: React.PropTypes.number // 进度环起点与 12 点方向的夹角 0 - 360 度
-  };
-
   render() {
     let { bgcolor, disabled, radius } = this.props;
     let diameter = radius * 2;
@@ -245,8 +233,8 @@ class PercentageCircle extends Component {
             width: diameter,
             height: diameter,
             borderRadius: radius,
-            backgroundColor: bgcolor
-          }
+            backgroundColor: bgcolor,
+          },
         ]}
       >
         {/* 右长方形，左半边圆 */}
@@ -269,7 +257,7 @@ PercentageCircle.defaultProps = {
   borderWidth: 2,
   bgcolor: "#e3e3e3",
   innerColor: "#fff",
-  rotate: 0
+  rotate: 0,
 };
 
 module.exports = PercentageCircle;
